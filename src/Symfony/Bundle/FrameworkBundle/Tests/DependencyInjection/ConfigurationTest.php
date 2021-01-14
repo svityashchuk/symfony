@@ -278,6 +278,45 @@ class ConfigurationTest extends TestCase
         );
     }
 
+    public function testMessengerMergeConfigsTransportOptions()
+    {
+        $processor = new Processor();
+        $configuration = new Configuration(true);
+        $config = $processor->processConfiguration($configuration, [
+            [
+                'messenger' => [
+                    'transports' => [
+                        'async' => [
+                            'dsn' => 'foo',
+                            'options' => [
+                                'auto_setup' => true,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'messenger' => [
+                    'transports' => [
+                        'async' => [
+                            'options' => [
+                                'wait_time' => 20,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->assertEquals(
+            [
+                'auto_setup' => true,
+                'wait_time' => 20,
+            ],
+            $config['messenger']['transports']['async']['options']
+        );
+    }
+
     public function testItShowANiceMessageIfTwoMessengerBusesAreConfiguredButNoDefaultBus()
     {
         $expectedMessage = 'You must specify the "default_bus" if you define more than one bus.';

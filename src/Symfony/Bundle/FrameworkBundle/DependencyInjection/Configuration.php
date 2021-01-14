@@ -1267,6 +1267,7 @@ class Configuration implements ConfigurationInterface
                                     ->scalarNode('dsn')->end()
                                     ->scalarNode('serializer')->defaultNull()->info('Service id of a custom serializer to use.')->end()
                                     ->arrayNode('options')
+                                        ->useAttributeAsKey('option')
                                         ->normalizeKeys(false)
                                         ->defaultValue([])
                                         ->prototype('variable')
