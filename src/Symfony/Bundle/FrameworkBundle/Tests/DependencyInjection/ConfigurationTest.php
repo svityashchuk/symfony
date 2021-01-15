@@ -308,7 +308,7 @@ class ConfigurationTest extends TestCase
             ],
         ]);
 
-        $this->assertEquals(
+        $this->assertSame(
             [
                 'auto_setup' => true,
                 'wait_time' => 20,
