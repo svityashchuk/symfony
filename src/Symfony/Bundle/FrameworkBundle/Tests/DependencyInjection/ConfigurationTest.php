@@ -290,6 +290,7 @@ class ConfigurationTest extends TestCase
                             'dsn' => 'foo',
                             'options' => [
                                 'auto_setup' => true,
+                                'option' => 'foo',
                             ],
                         ],
                     ],
@@ -301,6 +302,7 @@ class ConfigurationTest extends TestCase
                         'async' => [
                             'options' => [
                                 'wait_time' => 20,
+                                'option' => 'bar',
                             ],
                         ],
                     ],
@@ -311,6 +313,7 @@ class ConfigurationTest extends TestCase
         $this->assertSame(
             [
                 'auto_setup' => true,
+                'option' => 'bar',
                 'wait_time' => 20,
             ],
             $config['messenger']['transports']['async']['options']
