@@ -304,9 +304,10 @@ class PrototypedArrayNode extends ArrayNode
             return $rightSide;
         }
 
+        $isAssoc = array_keys($rightSide) !== range(0, \count($rightSide) - 1);
         foreach ($rightSide as $k => $v) {
-            // prototype, and key is irrelevant, append the element
-            if (null === $this->keyAttribute) {
+            // prototype, and key is irrelevant there are no named keys, append the element
+            if (null === $this->keyAttribute && !$isAssoc) {
                 $leftSide[] = $v;
                 continue;
             }

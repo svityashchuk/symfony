@@ -303,6 +303,13 @@ class ConfigurationTest extends TestCase
                             'options' => [
                                 'wait_time' => 20,
                                 'option' => 'bar',
+                                'queue' => [
+                                    'name' => 'Queue',
+                                    'option' => 'foo',
+                                    'queue_options' => [
+                                        'option' => 'foo',
+                                    ],
+                                ],
                             ],
                         ],
                     ],
@@ -315,6 +322,13 @@ class ConfigurationTest extends TestCase
                 'auto_setup' => true,
                 'option' => 'bar',
                 'wait_time' => 20,
+                'queue' => [
+                    'name' => 'Queue',
+                    'option' => 'foo',
+                    'queue_options' => [
+                        'option' => 'foo',
+                    ],
+                ],
             ],
             $config['messenger']['transports']['async']['options']
         );
